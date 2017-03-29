@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "28DF0C658FD953BF001C9695EEEDB924F5B7D816",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "28DF0C658FD953BF001C9695EEEDB924F5B7D816" : 9223372036854775807,
+    "6A15A194E68C2459B3C5289D6C61A532A102A85A" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EEEA60F2-4984-44C1-A944-AC7D20B9A934",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "28DF0C658FD953BF001C9695EEEDB924F5B7D816" : "SuitUp\/",
+    "6A15A194E68C2459B3C5289D6C61A532A102A85A" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Suitup",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Suitup\/Suitup.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Ramonywangziyao\/SuitUp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "28DF0C658FD953BF001C9695EEEDB924F5B7D816"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/matty-digital\/quiz2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6A15A194E68C2459B3C5289D6C61A532A102A85A"
+    }
+  ]
+}
