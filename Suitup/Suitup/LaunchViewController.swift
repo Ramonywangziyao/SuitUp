@@ -7,43 +7,41 @@
 //
 
 import Foundation
-import FacebookLogin
-import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import UIKit
 
-class LaunchViewController: UIViewController {
-    
-    let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-    
-    
-    struct MyProfileRequest: GraphRequestProtocol {
-        struct Response: GraphResponseProtocol {
-            init(rawResponse: Any?) {
-                // Decode JSON from rawResponse into other properties here.
-            }
-        }
-        
-        var graphPath = "/me"
-        var parameters: [String : Any]? = ["fields": "id, name"]
-        var accessToken = AccessToken.current
-        var httpMethod: GraphRequestHTTPMethod = .GET
-        var apiVersion: GraphAPIVersion = .defaultVersion
-    }
+class LaunchViewController: UIViewController,FBSDKLoginButtonDelegate {
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-        if let accessToken = AccessToken.current {
-            //fetch user info
-            //fetchProfile()
-            
-            //transit to main view
-        }
+
+ 
+ 
+
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
+    @IBAction func FBLoginButtonClick(_ sender: Any) {
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
+            if error != nil{
+                print("longinerror =\(error)")
+                
+                return
+            }
+            self.fetchProfile()
+            if (FBSDKAccessToken.current()) != nil{
+                self.performSegue(withIdentifier: "loggedSegue", sender: self)
+            }
+            
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,9 +49,33 @@ class LaunchViewController: UIViewController {
     
     func fetchProfile(){
         
-        
-        
     }
 
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("User Logged In")
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+ 
     
 }

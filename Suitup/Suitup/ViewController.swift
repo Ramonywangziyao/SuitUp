@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
     
@@ -44,6 +44,18 @@ class ViewController: UIViewController {
         suit.append(suitC)
         updateView(idx: counter)
     }
+    
+    
+    @IBAction func menuClick(_ sender: Any) {
+        //test logout
+        print("aa")
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        FBSDKAccessToken.setCurrent(nil)
+        performSegue(withIdentifier: "logoutSegue", sender: self)
+    }
+    
+    
     @IBAction func nextButtonClick(_ sender: Any) {
         counter+=1
         updateView(idx: counter)

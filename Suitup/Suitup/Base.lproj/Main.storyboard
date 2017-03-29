@@ -21,12 +21,36 @@
                     <view key="view" contentMode="scaleToFill" id="ZIz-TZ-DRr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFQ-cx-P2J">
+                                <rect key="frame" x="115" y="577" width="145" height="30"/>
+                                <color key="backgroundColor" red="0.30279658481339661" green="0.49926563712479527" blue="0.83620833333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1PG-U9-q87"/>
+                                    <constraint firstAttribute="width" constant="145" id="NwX-xX-Nde"/>
+                                </constraints>
+                                <state key="normal" title="Facebok Login">
+                                    <color key="titleColor" red="0.99616142811868658" green="1" blue="0.99780325390282276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="FBLoginButtonClick:" destination="j6j-WF-wg6" eventType="touchUpInside" id="tHC-qX-97Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HFQ-cx-P2J" firstAttribute="centerX" secondItem="ZIz-TZ-DRr" secondAttribute="centerX" id="5nX-iD-Zvt"/>
+                            <constraint firstItem="KsP-bt-oC6" firstAttribute="top" secondItem="HFQ-cx-P2J" secondAttribute="bottom" constant="60" id="N2e-u7-pQW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="HFQ-cx-P2J" id="wIG-fd-pNz"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="loggedSegue" id="b1k-h9-zWc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbY-LO-Vyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-625" y="123"/>
+            <point key="canvasLocation" x="-626.39999999999998" y="122.78860569715144"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -61,6 +85,9 @@
                                         <state key="normal" title="Menu">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nsM-ed-QB9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhe-7d-Tex">
                                         <rect key="frame" x="323" y="21" width="44" height="30"/>
@@ -402,11 +429,12 @@
                         <outlet property="botButtonView" destination="qzd-ac-MXD" id="SX9-VH-RPq"/>
                         <outlet property="shoeButtonView" destination="NMV-gr-JrA" id="VZg-OZ-t8L"/>
                         <outlet property="topButtonView" destination="BMg-0i-ZqX" id="HsU-aQ-g3G"/>
+                        <segue destination="j6j-WF-wg6" kind="presentation" identifier="logoutSegue" id="nuT-KB-yet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="76" y="123"/>
         </scene>
     </scenes>
     <resources>
