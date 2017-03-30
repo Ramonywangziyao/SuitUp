@@ -10,6 +10,7 @@
 		5A7AAAAC447D0840D2101D31 /* Pods_SuitupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D9E6ECD976D2F5D582CE4B /* Pods_SuitupTests.framework */; };
 		A02EF39AA807ACEA7A4D160B /* Pods_Suitup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C479FB2B38AF118005F4CC6 /* Pods_Suitup.framework */; };
 		DA5D93901E8C22EF00383772 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D938F1E8C22EF00383772 /* LaunchViewController.swift */; };
+		DA5D939E1E8C6D5F00383772 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D939D1E8C6D5F00383772 /* LocalUser.swift */; };
 		DA7EB78C1E85FB9E00EEA230 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB78B1E85FB9E00EEA230 /* Suit.swift */; };
 		DA7EB78E1E86040200EEA230 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB78D1E86040200EEA230 /* Item.swift */; };
 		DA7EB7901E86296C00EEA230 /* SuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB78F1E86296C00EEA230 /* SuitView.swift */; };
@@ -50,6 +51,7 @@
 		BCA5380AE8C9047CA9CFAE1A /* Pods-SuitupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuitupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuitupUITests/Pods-SuitupUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA5D938F1E8C22EF00383772 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		DA5D93911E8C266300383772 /* Suitup-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Suitup-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA5D939D1E8C6D5F00383772 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		DA7EB78B1E85FB9E00EEA230 /* Suit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		DA7EB78D1E86040200EEA230 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DA7EB78F1E86296C00EEA230 /* SuitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuitView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA5D939F1E8C6DB300383772 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D939D1E8C6D5F00383772 /* LocalUser.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		DA7EB7881E85FB3E00EEA230 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 				DA7EB78A1E85FB6000EEA230 /* Storyboard */,
 				DAF3E6C61E817F20005BEA7B /* Assets.xcassets */,
 				DAF3E6CB1E817F20005BEA7B /* Info.plist */,
+				DA5D939F1E8C6DB300383772 /* Realm */,
 				DAF3E6C31E817F20005BEA7B /* Suitup.xcdatamodeld */,
 				DA7EB78F1E86296C00EEA230 /* SuitView.swift */,
 				DA5D93911E8C266300383772 /* Suitup-Bridging-Header.h */,
@@ -492,6 +503,7 @@
 				DA7EB7901E86296C00EEA230 /* SuitView.swift in Sources */,
 				DAF3E6C51E817F20005BEA7B /* Suitup.xcdatamodeld in Sources */,
 				DAF3E6BF1E817F20005BEA7B /* ViewController.swift in Sources */,
+				DA5D939E1E8C6D5F00383772 /* LocalUser.swift in Sources */,
 				DA7EB78C1E85FB9E00EEA230 /* Suit.swift in Sources */,
 				DA5D93901E8C22EF00383772 /* LaunchViewController.swift in Sources */,
 				DAF3E6BD1E817F20005BEA7B /* AppDelegate.swift in Sources */,

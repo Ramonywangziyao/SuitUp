@@ -10,8 +10,11 @@ import Foundation
 import FBSDKCoreKit
 import FBSDKLoginKit
 import UIKit
+import RealmSwift
 
 class LaunchViewController: UIViewController,FBSDKLoginButtonDelegate {
+    
+    
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
@@ -47,9 +50,36 @@ class LaunchViewController: UIViewController,FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func fetchProfile(){
-        
+        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: {
+            connection, result, error -> Void in
+            var localUsr = LocalUser()
+            let realm = try! Realm()
+            if error != nil {
+                print("longinerror =\(error)")
+            } else {
+                if let resultNew = result as? [String:Any]{
+                    let usremail = resultNew["email"]  as! String
+                    localUsr.usremail = usremail
+                    let usrfirstname = resultNew["first_name"] as! String
+                    localUsr.usrfirstname=usrfirstname
+                    let usrlastname = resultNew["last_name"] as! String
+                    localUsr.usrlastname=usrlastname
+                    if let picture = resultNew["picture"] as? NSDictionary,
+                        let data = picture["data"] as? NSDictionary{
+                        let usrpicurl = data["url"] as? String
+                        localUsr.usrpicurl=usrpicurl!
+                    }
+                }
+            }
+            try! realm.write {
+                realm.add(localUsr)
+            }
+        })
     }
+    
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User Logged In")
@@ -73,6 +103,7 @@ class LaunchViewController: UIViewController,FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
+    
     func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
         return true
     }

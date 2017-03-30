@@ -8,6 +8,8 @@
 
 import UIKit
 import FBSDKLoginKit
+import RealmSwift
+import Realm
 
 class ViewController: UIViewController {
     
@@ -27,6 +29,13 @@ class ViewController: UIViewController {
     let shoec = UIImage(named: "shoec")
     var suit:Array<Suit>!
     var counter=0
+    var usrInfo:Results<LocalUser>?
+    var usrname:String?
+    var usrimgurl:String?
+    let realm = try! Realm()
+    
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var authorphoto: UIImageView!
     @IBOutlet weak var topButtonView: UIButton!
     @IBOutlet weak var botButtonView: UIButton!
     @IBOutlet weak var shoeButtonView: UIButton!
@@ -35,7 +44,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         suit=Array<Suit>()
+        
+        
         //load from server, take 20 a time
+        usrInfo = loadUserInfo()
+        updateAuthorInfo()
+        setImgRound(img:authorphoto)
         var suitA = Suit(cloth: topa!,pant: bota!,shoes: shoea!)
         var suitB = Suit(cloth: topb!,pant: botb!,shoes: shoeb!)
         var suitC = Suit(cloth: topc!,pant: botc!,shoes: shoec!)
@@ -43,8 +57,31 @@ class ViewController: UIViewController {
         suit.append(suitB)
         suit.append(suitC)
         updateView(idx: counter)
+        
+        
+        
     }
     
+    func loadUserInfo()->Results<LocalUser> {
+        return self.realm.objects(LocalUser.self)
+        
+    }
+    
+    func updateAuthorInfo(){
+        authorName.text = usrInfo![0].usrfirstname+usrInfo![0].usrlastname
+        if let url = NSURL(string: usrInfo![0].usrpicurl) {
+            if let data = NSData(contentsOf: url as URL) {
+                authorphoto.image = UIImage(data: data as Data)
+            }        
+        }
+    }
+    
+    func setImgRound(img: UIImageView){
+        img.layer.borderWidth=0
+        img.layer.masksToBounds=false
+        img.layer.cornerRadius = authorphoto.frame.width/2
+        img.clipsToBounds=true
+    }
     
     @IBAction func menuClick(_ sender: Any) {
         //test logout
@@ -66,6 +103,10 @@ class ViewController: UIViewController {
 
     }
 
+    @IBAction func authorPage(_ sender: Any) {
+        print("author page button clicked")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
