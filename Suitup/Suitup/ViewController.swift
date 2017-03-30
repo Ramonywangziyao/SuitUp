@@ -58,8 +58,24 @@ class ViewController: UIViewController {
         suit.append(suitC)
         updateView(idx: counter)
         
+        let swipeLeft = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
         
+        let swipeRight = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
         
+    }
+    
+    func swipe(_ recognizer:UISwipeGestureRecognizer){
+        if recognizer.direction == .left{
+            preUpdateView(dir:"right")
+
+        }else if recognizer.direction == .right{
+            preUpdateView(dir:"left")
+        }
+        let point=recognizer.location(in: self.view)
     }
     
     func loadUserInfo()->Results<LocalUser> {
@@ -94,13 +110,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func nextButtonClick(_ sender: Any) {
-        counter+=1
-        updateView(idx: counter)
+        preUpdateView(dir:"right")
     }
+    
     @IBAction func lastButtonClick(_ sender: Any) {
-        counter-=1
-        updateView(idx: counter)
-
+        preUpdateView(dir:"left")
     }
 
     @IBAction func authorPage(_ sender: Any) {
@@ -110,6 +124,23 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func preUpdateView(dir:String){
+        if dir=="right"{
+            counter+=1
+            if counter>=suit.count{
+                counter=0
+            }
+            updateView(idx: counter)
+        }
+        if dir=="left"{
+            counter-=1
+            if counter<0{
+                counter=suit.count-1
+            }
+            updateView(idx: counter)
+        }
     }
     
     func updateView(idx:Int){
