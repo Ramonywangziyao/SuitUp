@@ -19,37 +19,28 @@ class LaunchViewController: UIViewController,FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
- 
- 
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
     }
     
     @IBAction func FBLoginButtonClick(_ sender: Any) {
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result, error) in
             if error != nil{
                 print("longinerror =\(error)")
-                
                 return
             }
             self.fetchProfile()
             if (FBSDKAccessToken.current()) != nil{
                 self.performSegue(withIdentifier: "loggedSegue", sender: self)
             }
-            
         }
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func fetchProfile(){
         let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]

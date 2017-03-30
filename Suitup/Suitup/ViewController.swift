@@ -33,7 +33,11 @@ class ViewController: UIViewController {
     var usrname:String?
     var usrimgurl:String?
     let realm = try! Realm()
+    var commentView:UIView! = nil
+    var commentTable:UITableView! = nil
     
+    
+    @IBOutlet weak var suitView: SuitView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorphoto: UIImageView!
     @IBOutlet weak var topImageView: UIImageView!
@@ -51,13 +55,26 @@ class ViewController: UIViewController {
         usrInfo = loadUserInfo()
         updateAuthorInfo()
         setImgRound(img:authorphoto)
+        //test use
         var suitA = Suit(cloth: topa!,pant: bota!,shoes: shoea!)
         var suitB = Suit(cloth: topb!,pant: botb!,shoes: shoeb!)
         var suitC = Suit(cloth: topc!,pant: botc!,shoes: shoec!)
         suit.append(suitA)
         suit.append(suitB)
         suit.append(suitC)
+        //test use
+        
         updateView(idx: counter)
+        
+        //setting up comment area
+        commentView = UIView(frame:CGRect(x:suitView.frame.minX,y:suitView.frame.minY,width:suitView.frame.width,height:suitView.frame.height))
+        commentTable = UITableView(frame:CGRect(x:suitView.frame.minX,y:suitView.frame.minY,width:suitView.frame.width,height:suitView.frame.height))
+        commentView.backgroundColor = UIColor.red
+        commentView.addSubview(commentTable)
+        view.addSubview(commentView)
+        loadSuitComment(forView:commentView,hide:true)
+        
+        
         
         //add gesture recognizer for swiping left/right
         let swipeLeft = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
@@ -68,6 +85,13 @@ class ViewController: UIViewController {
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
+        let swipeUp = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
     }
     
     //swipe functioning
@@ -77,6 +101,10 @@ class ViewController: UIViewController {
 
         }else if recognizer.direction == .right{
             preUpdateView(dir:"left")
+        }else if recognizer.direction == .up{
+            preUpdateView(dir: "up")
+        }else if recognizer.direction == .down{
+            preUpdateView(dir: "down")
         }
         //the start point of swipe
         let point=recognizer.location(in: self.view)
@@ -152,6 +180,20 @@ class ViewController: UIViewController {
             }
             updateView(idx: counter)
         }
+        if dir=="up"{
+            //goes to comment view for current suit
+            //test code here. Add animation and swipe distance detection
+            print("up swpied")
+            loadSuitComment(forView:suitView,hide:true)
+            loadSuitComment(forView:commentView,hide:false)
+        }
+        if dir=="down"{
+            //return to suit view
+            //test code here. Add animation and swipe distance detection
+            loadSuitComment(forView:suitView,hide:false)
+            loadSuitComment(forView:commentView,hide:true)
+            print("down swpied")
+        }
     }
 
     //update the view
@@ -159,6 +201,11 @@ class ViewController: UIViewController {
         topImageView.image = suit[idx].top?.itemImage
         botImageView.image = suit[idx].bot?.itemImage
         shoeImageView.image = suit[idx].shoe?.itemImage
+    }
+    
+    func loadSuitComment(forView:UIView,hide:Bool){
+        //init comment view for suit
+        forView.isHidden = hide ? true : false
     }
 }
 
