@@ -283,6 +283,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZz-rV-bUl">
                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="233"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9eB-ha-qJC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="233"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMg-0i-ZqX">
                                                         <rect key="frame" x="0.0" y="0.0" width="230" height="233"/>
                                                     </button>
@@ -291,21 +294,32 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="BMg-0i-ZqX" secondAttribute="bottom" id="9qz-MO-Rv3"/>
                                                     <constraint firstAttribute="trailing" secondItem="BMg-0i-ZqX" secondAttribute="trailing" id="Cdo-TL-Zqv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9eB-ha-qJC" secondAttribute="trailing" id="L7G-Gs-uwA"/>
                                                     <constraint firstAttribute="width" secondItem="GZz-rV-bUl" secondAttribute="height" multiplier="230:233" id="XAf-Ch-4po"/>
                                                     <constraint firstItem="BMg-0i-ZqX" firstAttribute="top" secondItem="GZz-rV-bUl" secondAttribute="top" id="Y7s-n5-fwt"/>
                                                     <constraint firstItem="BMg-0i-ZqX" firstAttribute="leading" secondItem="GZz-rV-bUl" secondAttribute="leading" id="cmf-uM-1YM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9eB-ha-qJC" secondAttribute="bottom" id="tS1-2w-DRt"/>
+                                                    <constraint firstItem="9eB-ha-qJC" firstAttribute="top" secondItem="GZz-rV-bUl" secondAttribute="top" id="xfA-W0-I3B"/>
+                                                    <constraint firstItem="9eB-ha-qJC" firstAttribute="leading" secondItem="GZz-rV-bUl" secondAttribute="leading" id="zUi-UB-e8e"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sn-lh-4fY">
                                                 <rect key="frame" x="0.0" y="241" width="230" height="288"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKx-KW-OZ4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="288"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzd-ac-MXD">
                                                         <rect key="frame" x="0.0" y="0.0" width="230" height="288"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="bKx-KW-OZ4" secondAttribute="trailing" id="BE4-ym-5nM"/>
                                                     <constraint firstItem="qzd-ac-MXD" firstAttribute="leading" secondItem="4Sn-lh-4fY" secondAttribute="leading" id="JeW-EL-Jgd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="bKx-KW-OZ4" secondAttribute="bottom" id="bue-Px-jJU"/>
+                                                    <constraint firstItem="bKx-KW-OZ4" firstAttribute="leading" secondItem="4Sn-lh-4fY" secondAttribute="leading" id="ct2-5L-I3A"/>
+                                                    <constraint firstItem="bKx-KW-OZ4" firstAttribute="top" secondItem="4Sn-lh-4fY" secondAttribute="top" id="gRp-gb-8du"/>
                                                     <constraint firstItem="qzd-ac-MXD" firstAttribute="top" secondItem="4Sn-lh-4fY" secondAttribute="top" id="kqK-1a-nLT"/>
                                                     <constraint firstAttribute="trailing" secondItem="qzd-ac-MXD" secondAttribute="trailing" id="tEO-Ug-go1"/>
                                                     <constraint firstAttribute="bottom" secondItem="qzd-ac-MXD" secondAttribute="bottom" id="xxo-BI-EvR"/>
@@ -394,6 +408,10 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzF-TP-BHM">
                                                         <rect key="frame" x="0.0" y="144" width="121" height="144"/>
                                                         <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9c-GE-pO3">
+                                                                <rect key="frame" x="0.0" y="0.0" width="121" height="144"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMV-gr-JrA">
                                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="144"/>
                                                             </button>
@@ -461,9 +479,9 @@
                     <connections>
                         <outlet property="authorName" destination="kmg-a5-sc4" id="FUi-TC-n2J"/>
                         <outlet property="authorphoto" destination="LrR-nY-QlD" id="iEq-Qt-G1v"/>
-                        <outlet property="botButtonView" destination="qzd-ac-MXD" id="SX9-VH-RPq"/>
-                        <outlet property="shoeButtonView" destination="NMV-gr-JrA" id="VZg-OZ-t8L"/>
-                        <outlet property="topButtonView" destination="BMg-0i-ZqX" id="HsU-aQ-g3G"/>
+                        <outlet property="botImageView" destination="bKx-KW-OZ4" id="9mN-0D-qXF"/>
+                        <outlet property="shoeImageView" destination="k9c-GE-pO3" id="JyV-pf-uMk"/>
+                        <outlet property="topImageView" destination="9eB-ha-qJC" id="N4c-L5-dFX"/>
                         <segue destination="j6j-WF-wg6" kind="presentation" identifier="logoutSegue" id="nuT-KB-yet"/>
                     </connections>
                 </viewController>

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Suitup/ViewController.swift"
-            timestampString = "512580176.797523"
+            timestampString = "512581124.214144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>

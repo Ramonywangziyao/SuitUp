@@ -36,9 +36,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorphoto: UIImageView!
-    @IBOutlet weak var topButtonView: UIButton!
-    @IBOutlet weak var botButtonView: UIButton!
-    @IBOutlet weak var shoeButtonView: UIButton!
+    @IBOutlet weak var topImageView: UIImageView!
+    @IBOutlet weak var botImageView: UIImageView!
+    @IBOutlet weak var shoeImageView: UIImageView!
+
     //testUse
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
         suit.append(suitC)
         updateView(idx: counter)
         
+        //add gesture recognizer for swiping left/right
         let swipeLeft = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -68,6 +70,7 @@ class ViewController: UIViewController {
         
     }
     
+    //swipe functioning
     func swipe(_ recognizer:UISwipeGestureRecognizer){
         if recognizer.direction == .left{
             preUpdateView(dir:"right")
@@ -75,14 +78,16 @@ class ViewController: UIViewController {
         }else if recognizer.direction == .right{
             preUpdateView(dir:"left")
         }
+        //the start point of swipe
         let point=recognizer.location(in: self.view)
     }
     
+    //return the current logged in user's info
     func loadUserInfo()->Results<LocalUser> {
         return self.realm.objects(LocalUser.self)
-        
     }
     
+    //update the author of suit on top bar
     func updateAuthorInfo(){
         authorName.text = usrInfo![0].usrfirstname+usrInfo![0].usrlastname
         if let url = NSURL(string: usrInfo![0].usrpicurl) {
@@ -92,6 +97,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //modify imgview to round
     func setImgRound(img: UIImageView){
         img.layer.borderWidth=0
         img.layer.masksToBounds=false
@@ -99,6 +105,7 @@ class ViewController: UIViewController {
         img.clipsToBounds=true
     }
     
+    //left side menu button click
     @IBAction func menuClick(_ sender: Any) {
         //test logout
         print("aa")
@@ -108,15 +115,18 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "logoutSegue", sender: self)
     }
     
-    
+    //next suit button click
     @IBAction func nextButtonClick(_ sender: Any) {
         preUpdateView(dir:"right")
     }
     
+    //last suit button click
     @IBAction func lastButtonClick(_ sender: Any) {
         preUpdateView(dir:"left")
     }
 
+    //go to author's personal page
+    //show fans, past productions,etc
     @IBAction func authorPage(_ sender: Any) {
         print("author page button clicked")
     }
@@ -126,6 +136,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //update the index of current suit show in cache
     func preUpdateView(dir:String){
         if dir=="right"{
             counter+=1
@@ -142,14 +153,12 @@ class ViewController: UIViewController {
             updateView(idx: counter)
         }
     }
-    
+
+    //update the view
     func updateView(idx:Int){
-        topButtonView.setBackgroundImage(suit[idx].top?.itemImage, for: UIControlState.normal)
-        botButtonView.setBackgroundImage(suit[idx].bot?.itemImage, for: UIControlState.normal)
-        shoeButtonView.setBackgroundImage(suit[idx].shoe?.itemImage, for: UIControlState.normal)
+        topImageView.image = suit[idx].top?.itemImage
+        botImageView.image = suit[idx].bot?.itemImage
+        shoeImageView.image = suit[idx].shoe?.itemImage
     }
-
-
-
 }
 
