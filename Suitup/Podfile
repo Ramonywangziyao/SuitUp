@@ -10,6 +10,7 @@ target 'Suitup' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'RealmSwift'
+
   # Pods for Suitup
 
   target 'SuitupTests' do
